@@ -1,4 +1,5 @@
 import { useState, type FormEvent, type FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface LoginProps {
   onLogin: (user: User) => void;
@@ -6,12 +7,15 @@ interface LoginProps {
 
 const Login: FC<LoginProps> = ({ onLogin }) => {
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (email && password) {
-      onLogin({ email });
+    if (email && username && password) {
+      onLogin({ email, username });
+      navigate(`/welcome/${username}`);
     }
   };
 
@@ -28,6 +32,16 @@ const Login: FC<LoginProps> = ({ onLogin }) => {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 required
               />
             </div>

@@ -14,7 +14,7 @@ const Welcome: FC<WelcomeProps> = ({ user }) => {
               <h4 className="mb-0">Welcome to Todo App</h4>
             </div>
             <div className="card-body">
-              <h5>Hello, {user?.email}</h5>
+              <h5>Hello, {user?.username}</h5>
               <p className="text-muted">You have successfully logged in.</p>
               <p className="alert alert-info">
                 <strong>Coming Soon: </strong>Todo functionality will be added
