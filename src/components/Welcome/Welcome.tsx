@@ -1,5 +1,4 @@
 import { type FC } from 'react';
-import type { User } from '../../types';
 
 interface WelcomeProps {
   user: User;

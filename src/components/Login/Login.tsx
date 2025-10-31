@@ -1,12 +1,18 @@
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, type FC } from 'react';
 
-const Login = () => {
+interface LoginProps {
+  onLogin: (user: User) => void;
+}
+
+const Login: FC<LoginProps> = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(`Login: ${email}`);
+    if (email && password) {
+      onLogin({ email });
+    }
   };
 
   return (
