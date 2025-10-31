@@ -1,9 +1,9 @@
 import './App.css';
-import Login from './components/Login/Login.tsx';
-import Welcome from './components/Welcome/Welcome.tsx';
+import Login from './components/Login.tsx';
+import Welcome from './components/Welcome.tsx';
 import { useState } from 'react';
-import Menu from './components/Menu/Menu.tsx';
-import Footer from './components/Footer/Footer.tsx';
+import Menu from './components/Menu.tsx';
+import Footer from './components/Footer.tsx';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
