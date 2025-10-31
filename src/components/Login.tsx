@@ -2,10 +2,10 @@ import { useState, type FormEvent, type FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface LoginProps {
-  onLogin: (user: User) => void;
+  onLogin?: (user: User) => void;
 }
 
-const Login: FC<LoginProps> = ({ onLogin }) => {
+const Login: FC<LoginProps> = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -14,7 +14,6 @@ const Login: FC<LoginProps> = ({ onLogin }) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (email && username && password) {
-      onLogin({ email, username });
       navigate(`/welcome/${username}`);
     }
   };

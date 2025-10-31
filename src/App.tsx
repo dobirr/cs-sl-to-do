@@ -4,28 +4,23 @@ import Welcome from './components/Welcome.tsx';
 import { useState } from 'react';
 import Menu from './components/Menu.tsx';
 import Footer from './components/Footer.tsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = (user: User) => {
-    setUser(user);
-    setIsLoggedIn(true);
-  };
-
   return (
-    <div className="d-flex flex-column min-vh-100">
-      <Menu user={user} isLoggedIn={isLoggedIn} />
-      <main className="flex-grow-1">
-        {isLoggedIn && user ? (
-          <Welcome user={user} />
-        ) : (
-          <Login onLogin={handleLogin} />
-        )}
-      </main>
+    <Router>
+      <div className="d-flex flex-column min-vh-100">
+        <Menu user={user} isLoggedIn={isLoggedIn} />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/welcome/:username" element={<Welcome />} />
+        </Routes>
+      </div>
       <Footer />
-    </div>
+    </Router>
   );
 }
 
