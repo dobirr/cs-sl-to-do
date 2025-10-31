@@ -7,7 +7,7 @@ interface MenuProps {
 
 const Menu: FC<MenuProps> = ({ user, isLoggedIn }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
         <a className="navbar-brand" href="#home">
           Todo App
@@ -16,10 +16,13 @@ const Menu: FC<MenuProps> = ({ user, isLoggedIn }) => {
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggler="collapse"
+          data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          <span className="nav-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
         <div className="collapse navbar-collapse" id="navbarNav">

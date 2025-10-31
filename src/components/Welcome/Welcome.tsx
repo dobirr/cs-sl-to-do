@@ -6,12 +6,12 @@ interface WelcomeProps {
 
 const Welcome: FC<WelcomeProps> = ({ user }) => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-4">
       <div className="row justify-content-center">
-        <div className="col-md-8">
+        <div className="col-md-10">
           <div className="card">
-            <div className="card-header d-flex justify-content-between align-content-center">
-              <h4>Welcome to Todo App</h4>
+            <div className="card-header">
+              <h4 className="mb-0">Welcome to Todo App</h4>
             </div>
             <div className="card-body">
               <h5>Hello, {user?.email}</h5>
