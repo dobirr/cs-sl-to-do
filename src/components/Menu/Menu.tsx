@@ -43,6 +43,10 @@ const Menu: FC<MenuProps> = ({ user, isLoggedIn }) => {
                   Profile
                 </a>
               </li>
+            </ul>
+          )}
+          {isLoggedIn && (
+            <ul className="navbar-nav">
               <li className="nav-item">
                 <a className="nav-link" href="#logout">
                   Logout
