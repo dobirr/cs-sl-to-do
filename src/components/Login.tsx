@@ -1,5 +1,6 @@
 import { useState, type FormEvent, type FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import authService from '../services/authService.ts';
 
 interface LoginProps {
   onLogin?: (user: User) => void;
@@ -9,12 +10,18 @@ const Login: FC<LoginProps> = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (email && username && password) {
+
+    const result = await authService.authenticate(username, password);
+
+    if (result?.success) {
       navigate(`/welcome/${username}`);
+    } else {
+      setError(result?.message ?? 'Login fehlgeschlagen');
     }
   };
 
@@ -24,6 +31,7 @@ const Login: FC<LoginProps> = () => {
         <div className="card-body">
           <h3 className="card-title text-center mb-4">Login</h3>
           <form onSubmit={handleSubmit}>
+            {error && <div className="alert alert-danger">{error}</div>}
             <div className="mb-3">
               <input
                 type="email"
